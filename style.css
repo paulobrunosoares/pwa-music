@@ -1,0 +1,279 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000000db;
+}
+
+.container-player {
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 100%;
+  height: 100vh;
+  border: #ccc 1px solid;
+  position: relative;
+}
+
+.player {
+  width: 100%;
+  height: calc(100vh - 60%);
+  /* border: solid 1px rgb(255, 72, 0); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f1f1f1;
+  /* border: 1px solid #ccc; */
+  background-image: url("https://t3.ftcdn.net/jpg/07/28/24/60/240_F_728246051_OH9xfZLCVzr5VbYFTz9ePx2hvci3uTqG.jpg");
+  background-size: cover;
+}
+
+.visualizador-audio {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 0.7rem;
+  background-image: url("https://t3.ftcdn.net/jpg/06/15/47/64/360_F_615476401_jqqBFIVMdGWhWoQo8bqu83XMMQoYxWmN.jpg");
+  background-size: cover;
+}
+
+.visualizador-audio .animacao-player {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: solid 2px #a3a2a2;
+  display: flex;
+  /* animation: girar01 3s linear infinite; */
+  background-image: url("https://img.freepik.com/vetores-premium/ilustracao-vetorial-de-um-disco-de-vinil-em-preto-e-vermelho_786040-380.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.active-animation-player {
+  animation: girar01 3s linear infinite;
+}
+
+@keyframes girar01 {
+  0% {
+    transform: rotate(0deg);
+    /* scale: 0.5; */
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.player .container-controle-faixa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+.container-controle-faixa .progresso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 60px;
+}
+
+.container-controle-faixa .progresso .barra-progresso {
+  width: 100%;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.container-controle-faixa .progresso .barra-progresso .progresso-atual {
+  width: 0%;
+  height: 100%;
+  background-color: #2b9f11;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container-controle-faixa .progresso .controles-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 30px;
+  color: white;
+}
+
+marquee {
+  width: 80%;
+}
+.infoMp3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+.controles-files {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: transparent;
+  gap: 10px;
+}
+
+.controles-files div button {
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.controles-files div button:hover {
+  background-color: #f1f1f1;
+}
+
+.container-lista {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 1000px;
+  /* height: calc(100vh - 45%); */
+  height: calc(100vh - 40.5%);
+  border: #ccc 1px solid;
+}
+
+.container-lista .ctr-scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #defb00 #664969;
+  display: block;
+}
+
+.container-lista .loading {
+  display: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+}
+
+.container-lista .loading .spinner {
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 10px solid #ccc;
+  border-top-color: #2b9f11;
+  animation: loader 1s linear infinite;
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container-lista table {
+  position: relative;
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  color: white;
+  overflow-y: scroll;
+}
+
+.container-lista table thead {
+  background-color: #704e4e79;
+}
+
+.container-lista table thead th {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.container-lista table tbody tr {
+  padding: 1rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.active-tr {
+  background-color: red;
+}
+.container-lista table tbody tr td {
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  text-align: center;
+
+  :hover {
+    background-color: #e4e3e3;
+  }
+}
+
+@media (max-width: 768px) {
+  .player {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .visualizador-audio {
+    height: 200px;
+  }
+
+  .visualizador-audio .animacao-player {
+    width: 150px;
+    height: 150px;
+  }
+
+  .visualizador-audio .disco {
+    display: none;
+  }
+  .controles-files {
+    height: 70%;
+  }
+
+  .progresso {
+    height: 50px;
+  }
+
+  .controles-time {
+    height: 10px;
+  }
+
+  .infoMp3 {
+    width: 100%;
+  }
+
+  .container-lista {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1000px;
+    /* height: calc(100vh - 53%); */
+    height: calc(100vh - 40%);
+  }
+
+  .container-lista table tbody tr td {
+    /* border: 1px solid #ccc; */
+    font-size: 0.9rem;
+  }
+}

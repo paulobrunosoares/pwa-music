@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
-    
-    <!-- modify -->
-    <title>Title</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#33ffcc"/>
-    <!-- /manifest -->
-</head>
-<body>
-    
-    <h1>it works.</h1>
 
-    <!-- load service worker -->
-    <script src="app.js"></script>
-    <!-- /load service worker -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Music player PBSS</title>
+  <script src="../dist/id3-minimized.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  <div class="container-player">
+    <div class="player">
+      <div class="visualizador-audio">
+        <div class="animacao-player">
+        </div>
+        <div class="animacao-player disco">
+        </div>
+      </div>
+
+      <div class="container-controle-faixa">
+        <div class="progresso">
+          <div class="barra-progresso">
+            <div class="progresso-atual"></div>
+          </div>
+          <div class="controles-time">
+            <span class="tempo tempo-atual">00:00</span>
+            <marquee>
+              <div class="infoMp3">
+                <span>Nome da música - Artista - Album</span>
+              </div>
+            </marquee>
+            <span class="tempo tempo-total">00:00</span>
+          </div>
+        </div>
+
+        <div class="controles-files">
+          <div>
+            <button class="play">Play</button>
+            <button class="pause">Pause</button>
+            <button class="stop">Stop</button>
+            <button class="vol-up">Vol +</button>
+            <button class="vol-down">Vol -</button>
+          </div>
+          <input type="file" id="files" name="files[]" multiple accept=".mp3, .wav, .ops">
+        </div>
+      </div>
+    </div>
+
+    <div class="container-lista">
+      <div class="ctr-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>N*</th>
+              <th>Nome</th>
+              <!-- <th>Artista</th> -->
+              <!-- <th>Album</th> -->
+              <th>Duração</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr>
+            <td>Nome</td>
+            <td>Artista</td>
+            <td>Album</td>
+            <td>Duração</td>
+          </tr> -->
+          </tbody>
+        </table>
+      </div>
+      <div class="loading">
+        <div class="spinner">
+        </div>
+        <span>carragando dados...</span>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+
 </body>
-</html>
+
+</html!>
