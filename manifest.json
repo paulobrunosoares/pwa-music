@@ -1,7 +1,7 @@
 {
   "theme_color": "#f69435",
   "background_color": "#ce965f",
-  "display": "Fullscreen",
+  "display": "standalone",
   "scope": "/pwa-music/",
   "start_url": "/pwa-music/",
   "name": "pwa-music",

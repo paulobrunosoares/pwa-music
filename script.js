@@ -108,8 +108,8 @@ listarMp3Table = (listaFiles) => {
     tr.id = index;
     tr.key = key;
     td.innerHTML = index + 1;
-    tdName.innerHTML = value.name;
-    tdDuration.innerHTML = value.duration;
+    tdName.innerHTML = value?.name || file.name;
+    tdDuration.innerHTML = value?.duration || "00:00";
 
     // aplica hover na linha
     // tr.addEventListener("dblclick", (event) => {
