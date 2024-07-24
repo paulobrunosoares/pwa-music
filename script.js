@@ -26,7 +26,7 @@ inputAddFiles.addEventListener("change", async (readDados) => {
     ctr_scroll.style.display = "none";
   }
 
-  mp3File.forEach((faixa) => {
+  mp3File?.forEach((faixa) => {
     const audioMp3 = new Audio();
     audioMp3.src = URL.createObjectURL(faixa);
     audioMp3.addEventListener("loadedmetadata", async () => {
@@ -39,6 +39,8 @@ inputAddFiles.addEventListener("change", async (readDados) => {
           ? `${String(horas).padStart(2, "0")}:${String(minutos).padStart(2, "0")}:${String(segundos).padStart(2, "0")}`
           : `${String(minutos).padStart(2, "0")}:${String(segundos).padStart(2, "0")}`;
 
+      loading.style.display = "none";
+      ctr_scroll.style.display = "block";
       await setInfoFileAudioMap(faixa, duracaoTime);
     });
   });
@@ -64,8 +66,6 @@ async function setInfoFileAudioMap(file, duracaoTime) {
     });
     if (listaMp3.length === mapLitaMp3.size) {
       listarMp3Table();
-      loading.style.display = "none";
-      ctr_scroll.style.display = "block";
     }
   };
 
