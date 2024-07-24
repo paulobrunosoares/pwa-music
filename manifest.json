@@ -1,9 +1,9 @@
 {
   "theme_color": "#f69435",
   "background_color": "#ce965f",
-  "display": "minimal-ui",
+  "display": "standalone",
   "scope": "/pwa-music/",
-  "start_url": "/pwa-music/",
+  "start_url": "/pwa-music/index.html",
   "name": "My Music App",
   "short_name": "pwaMusic",
   "icons": [
