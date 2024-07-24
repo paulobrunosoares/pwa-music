@@ -1,7 +1,7 @@
 {
   "theme_color": "#f69435",
   "background_color": "#ce965f",
-  "display": "fullscreen",
+  "display": "minimal-ui",
   "scope": "/pwa-music/",
   "start_url": "/pwa-music/",
   "name": "My Music App",
