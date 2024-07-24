@@ -1,11 +1,11 @@
 {
-  "theme_color": "#f69435",
-  "background_color": "#ce965f",
+  "theme_color": "#d7a709",
+  "background_color": "#048563",
   "display": "standalone",
   "scope": "/pwa-music/",
   "start_url": "/pwa-music/index.html",
   "name": "My Music App",
-  "short_name": "pwaMusic",
+  "short_name": "MusicPlayer",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
