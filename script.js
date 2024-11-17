@@ -19,6 +19,38 @@ const acao_player = document.querySelectorAll(".controles-files .controle-volume
 const acaoPl = document.querySelector(".acao-player");
 let controleAcaoPl = 0;
 
+class Playlist {
+  playlist = [];
+  playedTracks = new Set();
+  constructor(tracks) {
+    this.playlist = tracks;
+  }
+
+  resetTracks() {
+    this.playedTracks.clear();
+  }
+
+  getRandomTrack() {
+    if (this.playedTracks.size === this.playlist.length) {
+      // Reinicia se todas as faixas foram reproduzidas
+      this.resetTracks();
+      console.log("Todas as faixas foram reproduzidas, reiniciando a reprodução aleatória.");
+    }
+
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * this.playlist.length);
+      // console.log("this.playedTracks.has(randomIndex)", this.playedTracks.has(randomIndex));
+    } while (this.playedTracks.has(randomIndex));
+
+    // Adiciona o índice ao conjunto de faixas já reproduzidas
+    this.playedTracks.add(randomIndex);
+    // console.log("randomIndex: ", this.playedTracks);
+    return randomIndex;
+  }
+}
+let instancePlaylist = null;
+
 acao_player[0].classList.add("action-acao-player");
 acaoPl.addEventListener("click", () => {
   acao_player.forEach((acao, index) => {
@@ -28,6 +60,9 @@ acaoPl.addEventListener("click", () => {
     controleAcaoPl = 0;
   } else controleAcaoPl++;
   acao_player[controleAcaoPl].classList.add("action-acao-player");
+  if (controleAcaoPl === 2) instancePlaylist = new Playlist(listaMp3);
+  else instancePlaylist = null;
+  // console.log("instancePlaylist: ", instancePlaylist);
 });
 
 let listaMp3 = [];
@@ -205,12 +240,16 @@ play.addEventListener("click", () => {
   });
 });
 
+let playlist = new Playlist([]);
+
 function runPlayers() {
   const acaoPl = () => {
     if (controleAcaoPl == 0) {
-      indexPlayList + 1 <= listaMp3.length ? indexPlayList++ : (indexPlayList = 0);
+      indexPlayList < listaMp3.length - 1 ? indexPlayList++ : (indexPlayList = 0);
     } else if (controleAcaoPl == 2) {
-      indexPlayList = Math.floor(Math.random() * listaMp3.length);
+      // indexPlayList = Math.floor(Math.random() * listaMp3.length);
+
+      indexPlayList = instancePlaylist.getRandomTrack();
     }
     activeRowTable(indexPlayList);
   };
