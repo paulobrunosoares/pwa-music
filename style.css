@@ -196,6 +196,25 @@ marquee {
   display: flex;
 }
 
+.controle-volume-files .acao-player {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.controle-volume-files .acao-player span {
+  position: absolute;
+  color: yellow;
+  font-weight: bold;
+  display: none;
+}
+
+.controle-volume-files .acao-player .action-acao-player {
+  display: flex;
+}
+
 /* #volume-range {
   width: 100%;
 } */
