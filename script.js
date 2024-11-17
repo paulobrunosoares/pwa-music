@@ -2,8 +2,6 @@ const player = document.querySelector(".player");
 const play = document.querySelector(".play");
 const pause = document.querySelector(".pause");
 const stop = document.querySelector(".stop");
-const volUp = document.querySelector(".vol-up");
-const volDown = document.querySelector(".vol-down");
 const progresBar = document.querySelector(".progresso-atual");
 const barraProgresso = document.querySelector(".barra-progresso");
 const controlesTime = document.querySelectorAll(".tempo");
@@ -13,6 +11,24 @@ const controle_show = document.querySelectorAll(".infoMp3 > .show");
 const inputAddFiles = document.getElementById("files");
 const ctr_scroll = document.querySelector(".ctr-scroll");
 const loading = document.querySelector(".loading");
+const volumeRange = document.getElementById("volume-range");
+// const volUp = document.querySelector(".vol-up");
+// const volDown = document.querySelector(".vol-down");
+
+const acao_player = document.querySelectorAll(".controles-files .controle-volume-files .acao-player span");
+const acaoPl = document.querySelector(".acao-player");
+let controleAcaoPl = 0;
+
+acao_player[0].classList.add("action-acao-player");
+acaoPl.addEventListener("click", () => {
+  acao_player.forEach((acao, index) => {
+    acao.classList.remove("action-acao-player");
+  });
+  if (controleAcaoPl == 2) {
+    controleAcaoPl = 0;
+  } else controleAcaoPl++;
+  acao_player[controleAcaoPl].classList.add("action-acao-player");
+});
 
 let listaMp3 = [];
 const mapLitaMp3 = new Map();
@@ -179,13 +195,30 @@ play.addEventListener("click", () => {
     if (!isNaN(minutosTotal) && !isNaN(segundosTotal) && isPlaying) {
       controlesTime[1].innerHTML = `${String(minutosTotal).padStart(2, "0")}:${String(segundosTotal).padStart(2, "0")}`;
     } else controlesTime[1].innerHTML = "00:00";
-    audio.addEventListener("ended", () => {
+    audio.addEventListener("ended", (ev) => {
+      if (audio.currentTime == 0) return;
       audio.currentTime = 0;
       stop.click();
       isPlaying = false;
+      runPlayers();
     });
   });
 });
+
+function runPlayers() {
+  const acaoPl = () => {
+    if (controleAcaoPl == 0) {
+      indexPlayList + 1 <= listaMp3.length ? indexPlayList++ : (indexPlayList = 0);
+    } else if (controleAcaoPl == 2) {
+      indexPlayList = Math.floor(Math.random() * listaMp3.length);
+    }
+    activeRowTable(indexPlayList);
+  };
+  if (listaMp3.length) {
+    acaoPl();
+    play.click();
+  }
+}
 
 pause.addEventListener("click", () => {
   audio.pause();
@@ -203,18 +236,13 @@ stop.addEventListener("click", () => {
   activeAnimation("stop");
 });
 
-volUp.addEventListener("click", () => {
-  if (audio.volume <= 0.9) {
-    audio.volume += 0.1;
-    controleVolume = audio.volume;
-  }
-});
-
-volDown.addEventListener("click", () => {
-  if (audio.volume >= 0.1) {
-    audio.volume -= 0.1;
-    controleVolume = audio.volume;
-  }
+volumeRange.addEventListener("input", function () {
+  const volume = volumeRange.value;
+  // console.log(`Volume ajustado para: ${volume}`);
+  // Aqui você pode conectar o valor do volume ao controle de áudio real
+  audio.volume = volume / 100;
+  controleVolume = volume / 100;
+  // Exemplo: audioElement.volume = volume / 100;
 });
 
 barraProgresso.addEventListener("click", (event) => {
@@ -238,6 +266,20 @@ function activeAnimation(event = "play" || "stop") {
     if (event === "stop") animacao.classList.remove("active-animation-player");
   });
 }
+
+// volUp.addEventListener("click", () => {
+//   if (audio.volume <= 0.9) {
+//     audio.volume += 0.1;
+//     controleVolume = audio.volume;
+//   }
+// });
+
+// volDown.addEventListener("click", () => {
+//   if (audio.volume >= 0.1) {
+//     audio.volume -= 0.1;
+//     controleVolume = audio.volume;
+//   }
+// });
 
 function activeInfoMp3(key, show = true) {
   const infoMp3 = mapLitaMp3.get(key);

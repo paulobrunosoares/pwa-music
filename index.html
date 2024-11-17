@@ -49,15 +49,36 @@
         </div>
 
         <div class="controles-files">
-          <div>
-            <button class="play">Play</button>
-            <button class="pause">Pause</button>
-            <button class="stop">Stop</button>
-            <button class="vol-up">Vol +</button>
-            <button class="vol-down">Vol -</button>
+          <div class="botoes">
+            <button class="play">
+              <img width="64" height="64" src="https://img.icons8.com/glyph-neue/64/FAB005/next.png" alt="next" />
+              <button class="pause">
+                <img width="64" height="64" src="https://img.icons8.com/glyph-neue/64/FAB005/pause-squared.png"
+                  alt="pause-squared" />
+              </button>
+              <button class="stop"><img width="64" height="64"
+                  src="https://img.icons8.com/glyph-neue/64/FAB005/stop-squared.png" alt="stop-squared" /></button>
+              <!-- <button class="vol-up">Vol +</button>
+              <button class="vol-down">Vol -</button> -->
+
           </div>
-          <input type="file" id="files" name="files[]" multiple accept=".mp3, .wav, .ops">
+          <div class="controle-volume-files">
+            <div class="acao-player">
+              <img width="55" height="55" src="https://img.icons8.com/pastel-glyph/64/FAB005/loop.png" alt="loop" />
+              <span id="all" class="">all</span>
+              <span id="one" class="">1</span>
+              <span id="random" class="">R</span>
+            </div>
+            <div class="file-input-wrapper">
+              <input class="file-input" type="file" id="files" name="files[]" multiple accept=".mp3, .wav, .ops">
+              <div class="custom-file-button">
+                <img width="48" height="48" src="https://img.icons8.com/doodle/48/photos-folder.png" alt="Upload" />
+              </div>
+            </div>
+            <input type="range" id="volume-range" class="volume-control" min="0" max="100" value="50" />
+          </div>
         </div>
+
       </div>
     </div>
 

@@ -134,27 +134,41 @@ marquee {
 
 .controles-files {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   width: 100%;
   height: 70%;
   background: transparent;
+  position: relative;
 }
 
+.controles-files .botoes {
+  max-width: 400px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+}
 .controles-files div button {
-  padding: 10px;
-  margin: 0 5px;
   border: none;
-  border-radius: 5px;
-  background-color: #ccc;
+  background-color: transparent;
   cursor: pointer;
 }
 
 .controles-files div button:hover {
-  background-color: #f1f1f1;
+  opacity: 0.7;
 }
 
+.volume-control {
+  width: 200px;
+  margin: 20px 0;
+}
+.volume-label {
+  display: block;
+  margin-bottom: 10px;
+}
 .container-lista {
   display: flex;
   flex-direction: column;
@@ -173,6 +187,57 @@ marquee {
   display: block;
 }
 
+.file-input-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.controle-volume-files {
+  display: flex;
+}
+
+.controle-volume-files .acao-player {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.controle-volume-files .acao-player span {
+  position: absolute;
+  color: yellow;
+  font-weight: bold;
+  display: none;
+}
+
+.controle-volume-files .acao-player .action-acao-player {
+  display: flex;
+}
+
+/* #volume-range {
+  width: 100%;
+} */
+.file-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom-file-button {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.custom-file-button img {
+  width: 50px;
+  height: auto;
+}
 .container-lista .loading {
   display: none;
   width: 100%;
@@ -275,7 +340,7 @@ marquee {
     display: none;
   }
   .controles-files {
-    /* height: 40%; */
+    /* height: 60%; */
   }
 
   .progresso {
@@ -290,12 +355,40 @@ marquee {
     width: 100%;
   } */
 
+  .controles-files {
+    flex-direction: column;
+  }
   .controles-files div button {
-    padding: 5px;
-    margin: 0 5px;
-    /* font-size: 0.8rem; */
+    padding: 2px;
   }
 
+  .controles-files .controle-volume-files {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .controles-files .controle-volume-files .acao-player {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    /* width: 100%; */
+    /* border: solid 1px #ccc; */
+  }
+
+  .controles-files .controle-volume-files .acao-player span {
+    position: absolute;
+    color: yellow;
+    font-weight: bold;
+    display: none;
+  }
+
+  .controles-files .controle-volume-files .acao-player .action-acao-player {
+    display: flex;
+  }
   /* .container-lista {
     height: 40%;
   } */
@@ -316,7 +409,7 @@ marquee {
   }
 
   .controles-files {
-    height: 100%;
+    /* height: 100%; */
   }
 
   .container-lista {
