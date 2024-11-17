@@ -21,6 +21,7 @@ body {
   justify-content: center;
   /* border: #ccc 1px solid; */
   position: relative;
+  overflow-y: hidden;
 }
 
 .container-closed {
